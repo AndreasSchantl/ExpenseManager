@@ -1,7 +1,7 @@
 <p align="center"><img src="public/images/logo.svg"></p>
 
 ## Expense Manager
-The Expense Manager is a web application that should give you a simple way to track all of your expeneses. Mostly every
+The Expense Manager is a web application that should give you a simple way to track all of your expenses. Mostly every
 day we pay something in cash and don't see how much we actually spend on different sort of things. That's where Expense
 Manager comes in. Create new expense types and digitalize all your bills and expenses. Keep track of them and get to 
 know your cost of living.
@@ -15,7 +15,7 @@ know your cost of living.
     - Decimal point and thousand separator
     - Date format
     - Database connection strings
-3. Run the command `php artsian setup:expensemanager` to create all tables and set up the default user
+3. Run the command `php artisan setup:expensemanager` to create all tables and set up the default user
 4. The web server needs to point to the `public` folder
 5. Log in with the user `admin` and the password `12345678` and start using Expense Manager 
 
