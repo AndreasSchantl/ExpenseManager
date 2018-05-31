@@ -16,7 +16,8 @@ know your cost of living.
     - Date format
     - Database connection strings
 3. Run the command `php artsian setup:expensemanager` to create all tables and set up the default user
-4. Log in with the user `admin` and the password `12345678` and start using Expense Manager 
+4. The web server needs to point to the `public` folder
+5. Log in with the user `admin` and the password `12345678` and start using Expense Manager 
 
 
 ## Contributing
