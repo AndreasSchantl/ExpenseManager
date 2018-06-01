@@ -8,16 +8,16 @@ know your cost of living.
 
 
 ## Installation
-1. Rename `.env.example` to `.env`
-2. In the `.env` file, take all the necessary customizations
+1. Run `composer install` in order to install all the necessary dependencies
+2. Rename `.env.example` to `.env`
+3. In the `.env` file, take all the necessary customizations
     - Your language code (currently supported is `en` and `de`)
     - Currency
     - Decimal point and thousand separator
     - Date format
     - Database connection strings
-3. Run the command `php artisan setup:expensemanager` to create all tables and set up the default user
-4. Point the webserver to the `public` folder
-5. Run `composer install` in order to install all the necessary dependencies
+4. Run the command `php artisan setup:expensemanager` to create all tables and set up the default user
+5. Point the webserver to the `public` folder 
 6. Log in with the user `admin` and the password `12345678` and start using Expense Manager 
 
 
