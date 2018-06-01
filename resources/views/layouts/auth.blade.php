@@ -1,7 +1,7 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     @include('layouts.head')
-    <title>@yield('title') - {{ env('app_name') }}</title>
+    <title>@yield('title') - {{ __('app.APP_NAME') }}</title>
 </head>
 <body class="login">
 
