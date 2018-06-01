@@ -17,7 +17,8 @@ know your cost of living.
     - Database connection strings
 3. Run the command `php artisan setup:expensemanager` to create all tables and set up the default user
 4. Point the webserver to the `public` folder
-5. Log in with the user `admin` and the password `12345678` and start using Expense Manager 
+5. Run `composer install` in order to install all the necessary dependencies
+6. Log in with the user `admin` and the password `12345678` and start using Expense Manager 
 
 
 ## Contributing
