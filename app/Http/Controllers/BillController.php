@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Bill;
+use App\ExpenseType;
 use Carbon\Carbon;
-use Ramsey\Uuid\Exception\UnsupportedOperationException;
 
 class BillController extends Controller
 {
@@ -17,32 +17,29 @@ class BillController extends Controller
     {
         $this->validate(request(), [
             'month' => 'numeric',
-            'year' => 'numeric'
+            'year' => 'numeric',
         ]);
 
         $month = request('month') ?? Carbon::now()->month;
         $year = request('year') ?? Carbon::now()->year;
 
-        if($month != 0) {
+        if ($month != 0) {
             $billBuilder = Bill::whereMonth('date', '=', $month)->whereYear('date', '=', $year);
         } else {
             $billBuilder = Bill::whereYear('date', '=', $year);
+        }
+
+        if (request('search')) {
+            $types = ExpenseType::where('name', 'LIKE', '%' . request('search') . '%')->get()->pluck('id')->toArray();
+
+            $billBuilder = $billBuilder->where('description', 'LIKE', '%' . request('search') . '%')
+                ->orWhereIn('type', $types);
         }
 
         $bills = $billBuilder->orderBy('date')->get();
         $total = $billBuilder->sum('amount');
 
         return view('bills.index', array('month' => $month, 'year' => $year, 'bills' => $bills, 'total' => $total));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -57,15 +54,11 @@ class BillController extends Controller
             'description' => 'required|min:3|max:70',
             'amount' => 'required|numeric',
             'type' => 'required',
-            'date' => 'required|date'
+            'date' => 'required|date',
+            'guarantee' => 'boolean'
         ]);
 
-        $bill = new Bill();
-        $bill->description = request('description');
-        $bill->amount = request('amount');
-        $bill->type = request('type');
-        $bill->date = request('date');
-        $bill->guarantee = (boolean)request('guarantee');
+        $bill = Bill::create(request()->all());
 
         try {
             $bill->save();
@@ -73,17 +66,6 @@ class BillController extends Controller
         } catch (\Exception $e) {
             return back()->withErrors($e->getMessage());
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -111,27 +93,25 @@ class BillController extends Controller
             'description' => 'required|min:3|max:70',
             'amount' => 'required|numeric',
             'type' => 'required',
-            'date' => 'required|date'
+            'date' => 'required|date',
+            'guarantee' => 'boolean'
         ]);
 
         $bill = Bill::findOrFail($id);
-        $bill->description = request('description');
-        $bill->amount = request('amount');
-        $bill->type = request('type');
-        $bill->date = request('date');
-        $bill->guarantee = (boolean)request('guarantee');
+        $bill->guarantee = false;
+        $bill->fill(request()->all());
 
         try {
             $bill->save();
 
             return redirect('/expenses')->with('info', __('app.exp_info_updated', ['date' => $bill->date->format(env('DATE_FORMAT')), 'desc' => $bill->description]));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return back()->withErrors($e->getMessage());
         }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove a bill
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -144,7 +124,7 @@ class BillController extends Controller
         try {
             $bill->delete();
             return back()->with('info', __('app.exp_info_deleted', ['date' => $bill->date->format(env('DATE_FORMAT')), 'desc' => $bill->description]));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return back()->withErrors($e->getMessage());
         }
     }
