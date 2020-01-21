@@ -3,75 +3,39 @@
 @section('title', __('app.users'))
 
 @section('content')
-    <h1>
-        {{ __('app.users') }}
-        <a href="{{ url()->to('users/create') }}" class="btn btn-primary font-weight-bold text-white">{{ __('app.misc_create') }}</a>
-    </h1>
-
-    <div class="table-responsive">
-        <table class="table table-hover" id="user-table">
-            <thead class="thead-dark">
-            <tr>
-                <th>{{ __('app.user_fname') }}</th>
-                <th>{{ __('app.user_lname') }}</th>
-                <th>{{ __('app.username') }}</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($users as $user)
-                <tr>
-                    <td>{{ $user->fname }}</td>
-                    <td>{{ $user->lname }}</td>
-                    <td>{{ $user->username }}</td>
-                    <td>
-                        <button
-                                class="btn btn-secondary btn-sm"
-                                onclick="location.href='{{ url()->to('users/'. $user->id) .'/edit' }}'"
-                        >
-                            <i class="fa fa-edit"></i>
-                        </button>
-                    </td>
-                    <td>
-                        <button
-                                class="btn btn-secondary btn-sm"
-                                data-toggle="modal"
-                                data-target="#delete"
-                                data-action="/users/{{ $user->id }}"
-                                data-name="{{ $user->fname }} {{ $user->lname }}"
-                        >
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-
-        <div id="delete" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">{{ __('app.user_delete') }}</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="remove-form" method="POST">
-                            @method('delete')
-                            @csrf
-                            <p>
-                                {!! __('app.user_deletion_text', ['user' => '<span style="font-weight: 700;" id="del-name"></span>']) !!}
-                            </p>
-                            <div>
-                                <button type="submit" class="btn btn-primary font-weight-bold text-white mt-3">
-                                    {{ __('app.misc_delete') }}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="flex justify-between pb-2 mx-4">
+        <h1 class="font-bold text-2xl">{{ __('app.users') }}</h1>
+        <a href="{{ route('users.create') }}" class="flex items-center px-2 bg-teal-500 hover:bg-teal-800 text-white uppercase tracking-widest text-center rounded duration-300 ease-out">{{ __('app.misc_create') }}</a>
     </div>
+    <table class="table-fixed table-stacked mx-4">
+        <thead class="bg-gray-800 rounded-t text-white">
+            <tr>
+                <th class="text-left p-1 w-1/3">{{ __('app.user_fname') }}</th>
+                <th class="text-left p-1">{{ __('app.user_lname') }}</th>
+                <th class="text-left p-1">{{ __('app.username') }}</th>
+                <th class="text-center p-1 w-10"></th>
+                <th class="text-center p-1 w-10"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($users as $user)
+            <tr class="hover:bg-gray-200">
+                <td data-label="{{ __('app.user_fname') }}" class="text-left p-1">{{ $user->fname }}</td>
+                <td data-label="{{ __('app.user_lname') }}" class="text-left p-1">{{ $user->lname }}</td>
+                <td data-label="{{ __('app.username') }}" class="text-left p-1">{{ $user->username }}</td>
+                <td data-label="{{ __('app.misc_update') }}">
+                    <button onclick="location.href='{{ route('users.edit', $user->id) }}'">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 icon-edit">
+                            <path class="primary" d="M4 14a1 1 0 0 1 .3-.7l11-11a1 1 0 0 1 1.4 0l3 3a1 1 0 0 1 0 1.4l-11 11a1 1 0 0 1-.7.3H5a1 1 0 0 1-1-1v-3z"></path>
+                            <rect width="20" height="2" x="2" y="20" class="secondary" rx="1"></rect>
+                        </svg>
+                    </button>
+                </td>
+                <td data-label="{{ __('app.misc_delete') }}">
+                    <delete-button route="{{ route('users.destroy', $user->id) }}"></delete-button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 @endsection
