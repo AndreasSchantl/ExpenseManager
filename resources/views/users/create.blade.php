@@ -3,9 +3,9 @@
 @section('title', __('app.user_create'))
 
 @section('content')
-    <h1 class="font-bold text-2xl mx-4">{{ __('app.user_create') }}</h1>
+    <h1 class="font-bold text-2xl mx-4 md:mx-0">{{ __('app.user_create') }}</h1>
 
-    <form action="/users" method="post" class="mx-4">
+    <form action="/users" method="post" class="mx-4 md:mx-0">
         @csrf
         <div class="flex md:flex-row flex-col w-full">
             <default-input class="mt-2 md:w-1/3 w-full" label="{{ __('app.user_fname') }}" placeholder="{{ __('app.user_fname') }}" name="fname"></default-input>

@@ -28,7 +28,8 @@ svg {
     }
 
     .table-stacked tr td {
-        border-top: 1px solid theme('colors.teal.200');;
+        border-top: 1px solid theme('colors.teal.200');
+        width: 100%;
     }
 
     .table-stacked td:before {

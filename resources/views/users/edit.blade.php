@@ -3,9 +3,9 @@
 @section('title', __('app.user_update'))
 
 @section('content')
-    <h1 class="font-bold text-2xl mx-4">{{ __('app.user_update') }}</h1>
+    <h1 class="font-bold text-2xl md:mx-0 mx-4">{{ __('app.user_update') }}</h1>
 
-    <form action="/users/{{ $user->id }}" method="post" class="mx-4">
+    <form action="/users/{{ $user->id }}" method="post" class="mx-4 md:mx-0">
         @method('put')
         @csrf
         <div class="flex md:flex-row flex-col w-full">

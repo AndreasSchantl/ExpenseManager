@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="application-name" content="{{ __('app.APP_NAME') }}">
 <meta name="apple-mobile-web-app-title" content="{{ __('app.APP_NAME') }}">
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 <link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
 <link rel="icon" href="{{ asset('images/favicon.png') }}">
 <script>
@@ -29,6 +29,6 @@
         }, false)
     }
 </script>
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ mix('js/app.js') }}" defer></script>
 
 <title>@yield('title') - {{ __('app.APP_NAME') }}</title>

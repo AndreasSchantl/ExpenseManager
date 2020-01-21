@@ -3,11 +3,11 @@
 @section('title', __('app.types'))
 
 @section('content')
-    <div class="flex justify-between pb-2 mx-4">
+    <div class="flex justify-between pb-2 mx-4 md:mx-0">
         <h1 class="font-bold text-2xl">{{ __('app.types') }}</h1>
         <a href="{{ route('expensetypes.create') }}" class="flex items-center px-2 bg-teal-500 hover:bg-teal-800 text-white uppercase tracking-widest text-center rounded duration-300 ease-out">{{ __('app.misc_create') }}</a>
     </div>
-    <table class="table-fixed table-stacked mx-4">
+    <table class="table-fixed table-stacked w-full mx-4 md:mx-0">
         <thead class="bg-gray-800 rounded-t text-white">
             <tr>
                 <th class="text-left p-1 w-1/3">{{ __('app.type_name') }}</th>

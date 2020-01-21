@@ -3,9 +3,9 @@
 @section('title', __('app.type_create'))
 
 @section('content')
-    <h1 class="font-bold text-2xl mx-4">{{ __('app.type_create') }}</h1>
+    <h1 class="font-bold text-2xl mx-4 md:mx-0">{{ __('app.type_create') }}</h1>
 
-    <form action="/expensetypes" method="post" class="mx-4">
+    <form action="/expensetypes" method="post" class="mx-4 md:mx-0">
         @csrf
         <default-input class="mt-2" label="{{ __('app.type_name') }}" placeholder="{{ __('app.type_name') }}" name="name"></default-input>
         <div class="flex flex-col mt-2">

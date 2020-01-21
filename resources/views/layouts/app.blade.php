@@ -6,7 +6,7 @@
 <body class="h-full w-full bg-gray-100">
 <main class="container mx-auto flex flex-col" id="app">
     <nav class="flex items-center flex-wrap container self-center md:h-16 md:px-0 px-4">
-        <div class="flex md:w-3/12 w-1/2 md:pt-0 pt-4">
+        <div class="flex md:w-3/12 w-1/2 lg:pt-0 pt-2">
             <a class="navbar-brand" href="{{ url('/expenses') }}">
                 <img src="{{ asset('images/logo.svg') }}" style="height: 2rem;" alt="Logo">
             </a>
