@@ -42,7 +42,7 @@
 <div class="flex md:flex-row flex-col">
     <div class="flex flex-col md:w-1/4 w-full md:pl-0 pl-4 pr-4">
         <h3 class="font-bold text-2xl">{{ __('app.exp_overview') }}</h3>
-        <table class="table-auto">
+        <table class="table-auto w-full">
             <thead class="bg-gray-800 rounded-t text-white">
                 <tr>
                     <th class="text-left p-1">{{ __('app.exp_type_short') }}</th>
@@ -106,7 +106,7 @@
 
     <div class="flex flex-col md:w-3/4 w-full pl-4 md:pr-0 pr-4 md:pt-0 pt-">
         <h3 class="font-bold text-2xl">{{ __('app.expenses') }}</h3>
-        <table class="table-fixed table-stacked">
+        <table class="table-fixed table-stacked w-full">
             <thead class="bg-gray-800 rounded-t text-white">
                 <tr>
                     <th class="text-left p-1 w-1/3">{{ __('app.exp_description') }}</th>
@@ -114,8 +114,8 @@
                     <th class="text-left p-1">{{ __('app.exp_type_short') }}</th>
                     <th class="text-right p-1">{{ __('app.exp_amount') }}</th>
                     <th class="text-center p-1">{{ __('app.exp_guarantee') }}</th>
-                    <th class="text-center p-1"></th>
-                    <th class="text-center p-1"></th>
+                    <th class="text-center p-1 w-10"></th>
+                    <th class="text-center p-1 w-10"></th>
                 </tr>
             </thead>
             <tbody>

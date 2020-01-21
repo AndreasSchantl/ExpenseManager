@@ -20,6 +20,8 @@ mix.js('resources/js/app.js', 'public/js')
       postCss: [ tailwindcss('./tailwind.config.js') ],
    }).browserSync('expensemanager.test');
 
+   mix.version();
+
    if(mix.inProduction()) {
       mix.purgeCss();
    }

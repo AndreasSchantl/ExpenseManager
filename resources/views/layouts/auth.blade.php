@@ -8,7 +8,7 @@
 <div class="w-full max-w-sm">
     <div class="col-md-4 align-self-center">
         <a href="{{ route('login') }}">
-            <img  src="{{ asset('images/logo.svg') }}" alt="Logo">
+            <img  src="{{ asset('images/logo.svg') }}" class="mx-4" alt="Logo">
         </a>
         <div class="rounded p-3 mt-8" id="app">
             @yield('content')
