@@ -3,7 +3,7 @@
 @section('title', __('app.login'))
 
 @section('content')
-    <div class="card-body">
+    <div class="w-full">
         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
             @csrf
 
@@ -21,32 +21,27 @@
                 </div>
             @endif
 
-            <div class="form-group">
-                <input id="username" type="text" class="form-control" name="username"
-                       placeholder="{{ __('app.username') }}"
-                       value="{{ old('username') }}" required autofocus>
+            <div class="bg-transparent overflow-hidden focus-within:border-teal-500 relative">
+                <input type="text" name="username" placeholder="{{ __('app.username') }}"
+                    class="w-full relative text-lg h-12 px-4 rounded-t border border-grey z-0 focus:z-10 focus:border-teal-500 focus:outline-none" 
+                    value="{{ old('username') }}" required autofocus>
+
+                <input type="password" name="password"
+                    placeholder="•••••••••" 
+                    class="w-full relative text-lg h-12 px-4 rounded-b border border-grey-100 z-0 focus:z-10 focus:border-teal-500 focus:outline-none" style="margin-top: -1px;" required>
             </div>
 
             <div class="form-group">
-                <input id="password" type="password" class="form-control" name="password"
-                       placeholder="{{ __('app.user_password') }}" required>
+                    <label class="inline-flex items-center mt-2 mb-6">
+                        <input type="checkbox" class="form-radio text-teal-500" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <span class="ml-2" for="remember">{{ __('app.login_keep_logged_in') }}</span>
+                    </label>
             </div>
 
-            <div class="form-group">
-                <div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label class="custom-control-label" for="remember">{{ __('app.login_keep_logged_in') }}</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div>
-                    <button type="submit" class="btn btn-primary font-weight-bold text-white">
-                        {{ __('app.login_action') }}
-                    </button>
-                </div>
+            <div class="w-full">
+                <button type="submit" class="w-full bg-teal-500 hover:bg-teal-800 text-white uppercase tracking-widest text-center rounded h-10 duration-300 ease-out">
+                    {{ __('app.login_action') }}
+                </button>
             </div>
         </form>
     </div>

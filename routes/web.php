@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    if(Auth::check())
+    if (Auth::check())
         return redirect('expenses');
 
     return view('auth.login');
@@ -25,9 +25,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-
-    Route::resource('expenses', 'BillController');
+    Route::resource('expenses', 'BillController')->except(['show', 'create']);
     Route::resource('/expensetypes', 'ExpenseTypeController');
     Route::resource('/users', 'UserController');
+
+    Route::get('/api/getTranslation/{key}', function ($key) {
+        return __($key);
+    });
 });

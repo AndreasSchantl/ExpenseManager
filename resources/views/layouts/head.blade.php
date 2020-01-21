@@ -4,15 +4,31 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="theme-color" content="#19de8b">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="application-name" content="{{ __('app.APP_NAME') }}">
 <meta name="apple-mobile-web-app-title" content="{{ __('app.APP_NAME') }}">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
 <link rel="icon" href="{{ asset('images/favicon.png') }}">
-<link rel="dns-prefetch" href="https://fonts.gstatic.com">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" crossorigin="anonymous">
+<script>
+    if (('standalone' in navigator) && navigator.standalone) {
+        document.addEventListener('click', function(e) {
+            var curnode = e.target
+            while (!(/^(a|html)$/i).test(curnode.nodeName)) {
+                curnode = curnode.parentNode
+            }
+            if ('href' in curnode
+                && (chref = curnode.href).replace(document.location.href, '').indexOf('#')
+                && (!(/^[a-z\+\.\-]+:/i).test(chref)
+                || chref.indexOf(document.location.protocol + '//' + document.location.host) === 0)
+            ) {
+                e.preventDefault()
+                document.location.href = curnode.href
+            }
+        }, false)
+    }
+</script>
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 <title>@yield('title') - {{ __('app.APP_NAME') }}</title>
