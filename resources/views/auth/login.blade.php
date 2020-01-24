@@ -7,18 +7,22 @@
         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
             @csrf
 
-            @if(!$errors->isEmpty())
-                @foreach($errors->all() as $error)
-                    <div class="alert alert-danger" role="alert">
-                        {{ $error }}
+            @if (session('info'))
+                <div class="w-full mb-3">
+                    <div class="bg-teal-200 text-teal-800 rounded w-full text-center border border-teal-400 p-2" role="alert">
+                        {{ session('info') }}
                     </div>
-                @endforeach
+                </div>
             @endif
 
-            @if(session('info'))
-                <div class="alert alert-warning" role="alert">
-                    {{ session('info') }}
-                </div>
+            @if(!$errors->isEmpty())
+                @foreach($errors->all() as $error)
+                    <div class="w-full mb-3">
+                        <div class="bg-red-200 text-red-800 rounded w-full text-center border border-red-400 p-2" role="alert">
+                            {{ $error }}
+                        </div>
+                    </div>
+                @endforeach
             @endif
 
             <div class="bg-transparent overflow-hidden focus-within:border-teal-500 relative">

@@ -47,15 +47,19 @@
     </nav>
 
     @if (session('info'))
-        <div class="bg-teal-200 text-teal-800 rounded w-full text-center border border-teal-400 p-2 mb-3" role="alert">
-            {{ session('info') }}
+        <div class="w-full mb-3 md:px-0 px-4">
+            <div class="bg-teal-200 text-teal-800 rounded w-full text-center border border-teal-400 p-2" role="alert">
+                {{ session('info') }}
+            </div>
         </div>
     @endif
 
     @if(!$errors->isEmpty())
         @foreach($errors->all() as $error)
-            <div class="bg-red-200 text-red-800 rounded w-full text-center border border-red-400 p-2 mb-3" role="alert">
-                {{ $error }}
+            <div class="w-full mb-3 md:px-0 px-4">
+                <div class="bg-red-200 text-red-800 rounded w-full text-center border border-red-400 p-2" role="alert">
+                    {{ $error }}
+                </div>
             </div>
         @endforeach
     @endif

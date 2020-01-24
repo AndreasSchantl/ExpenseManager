@@ -75,7 +75,7 @@
         <h4 class="font-bold text-2xl mt-6">{{ __('app.exp_new') }}</h4>
         <form action="{{ url('expenses') }}" method="post">
             @csrf
-            <default-textfield label="Beschreibung" placeholder="Beschreibung" name="description" :max="70"></default-textfield>
+            <default-textfield label="Beschreibung" placeholder="Beschreibung" name="description" :max="70" :autofocus="true"></default-textfield>
             <default-input class="mt-2" label="{{ __('app.exp_date') }}" placeholder="{{ __('app.exp_date') }}" type="date" name="date" value="{{ old('date') }}"></default-input>
             <default-input class="mt-2" label="{{ __('app.exp_amount') }} - {{ env('CURRENCY') }}" placeholder="{{ __('app.exp_amount') }}" type="number" name="amount" step="0.01" value="{{ old('amount') }}"></default-input>
             <div class="flex flex-col mt-2">
