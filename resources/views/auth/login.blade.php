@@ -27,12 +27,12 @@
 
             <div class="bg-transparent overflow-hidden focus-within:border-teal-500 relative">
                 <input type="text" name="username" placeholder="{{ __('app.username') }}"
-                    class="w-full relative text-lg h-12 px-4 rounded-t border border-grey z-0 focus:z-10 focus:border-teal-500 focus:outline-none" 
+                    class="w-full relative text-lg h-12 px-4 rounded-t border border-grey z-0 focus:z-10 focus:border-teal-500 focus:outline-none appearance-none" 
                     value="{{ old('username') }}" required autofocus>
 
                 <input type="password" name="password"
                     placeholder="•••••••••" 
-                    class="w-full relative text-lg h-12 px-4 rounded-b border border-grey-100 z-0 focus:z-10 focus:border-teal-500 focus:outline-none" style="margin-top: -1px;" required>
+                    class="w-full relative text-lg h-12 px-4 rounded-b border border-grey-100 z-0 focus:z-10 focus:border-teal-500 focus:outline-none appearance-none" style="margin-top: -1px;" required>
             </div>
 
             <div class="form-group">
