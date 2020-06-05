@@ -9,7 +9,7 @@
 <meta name="application-name" content="{{ __('app.APP_NAME') }}">
 <meta name="apple-mobile-web-app-title" content="{{ __('app.APP_NAME') }}">
 <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-<link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
+<link rel="apple-touch-icon" href="{{ asset('images/apple_touch_icon.png') }}">
 <link rel="icon" href="{{ asset('images/favicon.png') }}">
 <script>
     if (('standalone' in navigator) && navigator.standalone) {
