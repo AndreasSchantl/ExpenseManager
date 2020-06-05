@@ -6,7 +6,7 @@
 <div class="flex items-center w-full md:ml-4 md:mr-24 bg-white h-10 rounded">
     <form class="flex h-full flex-grow" action="{{ url('/expenses') }}">
         <input
-            class="w-full inline-block h-full border border-r-0 rounded-l border-grey-100 px-4 focus:border-teal-500 focus:border-r focus:outline-none"
+            class="w-full inline-block h-full border border-r-0 rounded-l border-grey-100 px-4 focus:border-teal-500 focus:border-r focus:outline-none appearance-none"
             name="search" value="{{ request('search') }}" placeholder="{{ __('app.exp_search') }}" type="text">
         <select
             class="h-full bg-white md:w-16 w-12 border border-l-0 border-r-0 border-grey-100 md:px-4 px-2 focus:border-teal-500 focus:border-l focus:border-r focus:outline-none rounded-none appearance-none"
@@ -26,7 +26,7 @@
             <option value="0" {{ $month == 0 ? 'selected' : '' }}>{{ __('app.months_all') }}</option>
         </select>
         <input
-            class="h-full md:w-24 w-20 border border-l-0 border-r-0 border-grey-100 px-4 focus:border-teal-500 focus:border-l focus:border-r focus:outline-none"
+            class="h-full md:w-24 w-20 border border-l-0 border-r-0 border-grey-100 px-4 focus:border-teal-500 focus:border-l focus:border-r focus:outline-none appearance-none"
             type="number" name="year" placeholder="YYYY" value="{{ $year }}">
         <button class="pr-4 pl-2 border border-l-0 border-grey-100 rounded-r focus:outline-none focus:border-l focus:border-teal-500 hover:border-teal-500" type="submit" title="{{ __('app.misc_show') }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 icon-search">

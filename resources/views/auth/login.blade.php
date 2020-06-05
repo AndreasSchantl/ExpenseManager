@@ -3,7 +3,7 @@
 @section('title', __('app.login'))
 
 @section('content')
-    <div class="w-full">
+    <div class="w-full flex flex-col">
         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
             @csrf
 
@@ -48,5 +48,6 @@
                 </button>
             </div>
         </form>
+        <span class="text-xs text-gray-500 text-center">{{ config('expensemanager.version') }}</span>
     </div>
 @endsection
