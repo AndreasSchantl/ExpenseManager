@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ExpenseType;
+use App\Models\ExpenseType;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
 
 class ExpenseTypeController extends Controller
@@ -43,8 +43,9 @@ class ExpenseTypeController extends Controller
         $e = new ExpenseType();
         $e->name = request('name');
 
-        if(request('parent') != -1)
+        if (request('parent') != -1) {
             $e->parent = request('parent');
+        }
 
         try {
             $e->save();
@@ -94,10 +95,11 @@ class ExpenseTypeController extends Controller
         $e = ExpenseType::findOrFail($id);
         $e->name = request('name');
 
-        if(request('parent') != -1)
+        if (request('parent') != -1) {
             $e->parent = request('parent');
-        else
+        } else {
             $e->parent = null;
+        }
 
         try {
             $e->save();
@@ -120,7 +122,7 @@ class ExpenseTypeController extends Controller
         try {
             $e->delete();
             return back()->with('info', __('app.type_info_deleted', ['type' => $e->name]));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return back()->withErrors($e->getMessage());
         }
     }

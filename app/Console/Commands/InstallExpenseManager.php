@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Console\Command;
 
 class InstallExpenseManager extends Command
@@ -39,8 +40,6 @@ class InstallExpenseManager extends Command
     {
         $this->call('key:generate');
         $this->call('migrate');
-        $this->call('db:seed', [
-            '--class' => 'DatabaseSeeder'
-        ]);
+        $this->call('db:seed');
     }
 }

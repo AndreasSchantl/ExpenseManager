@@ -11,23 +11,26 @@
 |
 */
 
-
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\ExpenseTypeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    if (Auth::check())
+    if (Auth::check()) {
         return redirect('expenses');
+    }
 
     return view('auth.login');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('expenses', 'BillController')->except(['show', 'create']);
-    Route::resource('/expensetypes', 'ExpenseTypeController');
-    Route::resource('/users', 'UserController');
+    Route::resource('expenses', BillController::class)->except(['show', 'create']);
+    Route::resource('/expensetypes', ExpenseTypeController::class);
+    Route::resource('/users', UserController::class);
 
     Route::get('/api/getTranslation/{key}', function ($key) {
         return __($key);

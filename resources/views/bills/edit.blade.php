@@ -15,7 +15,7 @@
                 <span class="text-sm">{{ __('app.exp_type') }}</span>
                 <select class="h-10 bg-white w-full border border-grey-100 px-4 focus:border-teal-500 focus:border-l focus:border-r focus:outline-none rounded appearance-none"
                     title="{{ __('app.exp_type') }}" name="type" class="form-control">
-                    @foreach(App\ExpenseType::all() as $type)
+                    @foreach(App\Models\ExpenseType::all() as $type)
                         <option value="{{ $type->id }}" {{ $bill->type == $type->id ? 'selected' : '' }}>
                             {{ $type->name }}
                         </option>

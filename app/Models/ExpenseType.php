@@ -1,11 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ExpenseType extends Model
 {
+    use HasFactory;
+
     public function parentO()
     {
         return $this->hasOne(ExpenseType::class, 'id', 'parent');
@@ -13,9 +16,10 @@ class ExpenseType extends Model
 
     public function total($month, $year)
     {
-        if($month != 0)
+        if ($month != 0) {
             return Bill::where('type', $this->id)->whereMonth('date', '=', $month)->whereYear('date', '=', $year)->sum('amount');
-        else
+        } else {
             return Bill::where('type', $this->id)->whereYear('date', '=', $year)->sum('amount');
+        }
     }
 }

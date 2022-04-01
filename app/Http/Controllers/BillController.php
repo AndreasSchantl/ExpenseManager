@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Bill;
-use App\ExpenseType;
+use App\Models\Bill;
+use App\Model\ExpenseType;
 use Carbon\Carbon;
 
 class BillController extends Controller

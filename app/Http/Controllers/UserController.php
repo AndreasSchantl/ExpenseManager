@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
 
@@ -49,7 +49,7 @@ class UserController extends Controller
         $u->fname = request('fname');
         $u->lname = request('lname');
 
-        if(request('password') === request('password-repeat')) {
+        if (request('password') === request('password-repeat')) {
             $u->password = Hash::make(request('password'));
         } else {
             return back()->withErrors(__('app.user_info_passmismatch'));
@@ -58,7 +58,7 @@ class UserController extends Controller
         try {
             $u->save();
             return redirect('users')->with('info', __('app.user_info_created'));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return back()->withErrors($e->getMessage());
         }
     }
@@ -106,7 +106,7 @@ class UserController extends Controller
         $u->fname = request('fname');
         $u->lname = request('lname');
 
-        if(request('password') != null) {
+        if (request('password') != null) {
             if (request('password') === request('password-repeat')) {
                 $u->password = Hash::make(request('password'));
             } else {
@@ -117,7 +117,7 @@ class UserController extends Controller
         try {
             $u->save();
             return redirect('users')->with('info', __('app.user_info_updated', ['user' => $u->fname . ' ' . $u->lname]));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return back()->withErrors($e->getMessage());
         }
     }
@@ -135,7 +135,7 @@ class UserController extends Controller
         try {
             $u->delete();
             return back()->with('info', __('app.user_info_deleted', ['user' => $u->fname . ' ' . $u->lname]));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return back()->withErrors($e->getMessage());
         }
     }

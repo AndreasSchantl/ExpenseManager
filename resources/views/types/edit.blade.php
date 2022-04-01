@@ -14,7 +14,7 @@
             <select class="h-10 bg-white w-full border border-grey-100 px-4 focus:border-teal-500 focus:border-l focus:border-r focus:outline-none rounded appearance-none"
                 title="{{ __('app.type_parent') }}" name="parent" class="form-control">
                 <option value="-1">{{ __('app.type_no_parent') }}</option>
-                @foreach(\App\ExpenseType::all() as $t)
+                @foreach(\App\Models\ExpenseType::all() as $t)
                     <option value="{{ $t->id }}" @if($t->id == $type->parent) selected @endif>{{ $t->name }}</option>
                 @endforeach
             </select>

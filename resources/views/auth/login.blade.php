@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="w-full flex flex-col">
-        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+        <form class="form-horizontal" method="POST" action="/login">
             @csrf
 
             @if (session('info'))
